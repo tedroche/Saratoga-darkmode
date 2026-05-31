@@ -1,0 +1,430 @@
+/**********************************
+ * TITLE: Gila Screen Stylesheet  *
+ * URI  : gila/gila-screen.css    *
+ * MODIF: 2003-Apr-30 19:09 +0800 *
+ **********************************/
+
+/* Modified by Ted Roche to support DARK mode only in Saratoga templates with
+ * or without Theme Switcher
+ * lastest version live at https://contoocook.org/weather-screen-blue-narrow-dark.css
+ * Source and documentation at https://github.com/tedroche/Saratoga-darkmode
+*/
+
+/* @media (prefers-color-scheme:dark) { /* If the dark scheme is specifically requested: */
+
+:root {
+  color-scheme: dark;
+  --main-bg-color: black;
+  --alt-bg-color:  dimgray;
+  --main-fg-color: lightgray;
+
+  --main-anchor-color: lightblue;
+  --hover-anchor-color: lightyellow;
+  --visited-anchor-color: violet ;
+
+  --arrowup-color: lime;
+  --arrowdown-color: red;
+
+  --temp-high-color: pink; /* was red */
+  --temp-low-color: lightblue; /* was full blue */
+
+  --theme-hdr-bg-color: steelblue ; /* #3173B1; */
+  --theme-subhdr-bg-color: dimgray ; /* #666666; */
+  --theme-tabletop-bg-color: darkseagreen ; /* was #96C6F5; */
+  --theme-box-bdr-color: darkslategray ; /* was rgb(34,70,79); */
+  --theme-box-warn-bgcolor: red ;
+  --theme-watchbox-bgcolor: orange ; /*#FF9900;*/ 
+  --theme-advisory-bgcolor: gold ; /* #FFCC00; */
+}
+
+/* TODO: existing colors to code, or not.
+  * existing singleton colors, search for "color: #"
+*/
+
+/*darkmode form for switching */
+#darkmodeform input#dark:checked ,
+#darkmodeform input#system:checked {
+  cursor: not-allowed;
+  opacity: 75%;
+}
+
+body {
+  color: var(--main-fg-color) ;
+  background-color: var(--main-bg-color) ;
+}
+
+/* Dark mode anchor highlights on dark */ 
+  a { color: var(--main-anchor-color); }
+  a:visited { color: var(--visited-anchor-color); }
+  a:hover {color: var(--hover-anchor-color); }
+
+/* Replace arrow graphics with colored html entities */
+  .arrowup, .arrowdown {font-size: 100%; font-weight:900; }
+  .arrowup { color: var(--arrowup-color); }
+  .arrowdown { color: var(--arrowdown-color); }
+
+/* Replace hardcoded hot/cold red/blue with style classes and html up/down entities*/
+  .temphi {color: var(--temp-high-color); font-weight:bold; }
+  .templo {color: var(--temp-low-color);  font-weight:bold; }
+
+
+#page {
+    color: var(--main-fg-color) ;
+    background-color: var(--alt-bg-color) ;
+}
+
+/* ##### Header ##### */
+
+#header {
+  color: inherit;
+  background-color: var(--theme-hdr-bg-color) ;
+}
+
+.headerTitle a {
+  color: black;
+  background-color: transparent;
+}
+
+.headerTitle span {
+  color: var(--main-fg-color);
+  background-color: transparent;
+}
+
+.headerTemp {
+  color: var(--main-fg-color);
+}
+
+.subHeader {
+  color: var(--main-fg-color);
+  background-color: var(--theme-subhdr-bg-color) ; /* #666666; */
+}
+
+.subHeaderRight {
+  color: var(--main-fg-color);
+  background-color:  var(--theme-subhdr-bg-color) ; /* #666666; */
+}
+
+.subHeader a {
+  color: violet;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* ##### Left Side Bar ##### */
+
+.leftSideBar .sideBarTitle {
+  color: ivory;
+  background-color: var(--theme-hdr-bg-color); /*  #3173B1;*/
+}
+
+.leftSideBar a {
+  color:ivory;
+  background-color: transparent;
+}
+
+.leftSideBar a:visited {
+  color: var(--visited-anchor-color);
+  background-color: transparent;
+}
+
+.leftSideBar a:hover {
+  background-color: cornflowerblue;
+  color: var(--hover-anchor-color);
+}
+
+.leftSideBar .sideBarText {
+  color: var(--main-fg-color);
+  background-color: transparent;
+}
+
+.leftSideBar .thisPage {
+  color: var(--main-fg-color);
+  background-color: transparent;
+}
+
+/* ##### Main Copy ##### */
+
+#main-copy {
+  color: var(--main-fg-color);
+  background-color: var(--alt-bg-color);
+  border-left-color: var(--main-bg-color);
+}
+
+#main-copy-dark {
+  color: var(--alt-bg-color);
+  background-color: var(--main-fg-color);
+  border-left-color: var(--main-bg-color);
+}
+
+#main-copy h1 {
+  color: var(--main-fg-color);
+  background-color: transparent;
+  border-top-color: var(--main-bg-color);
+}
+
+#main-copy a { background-color: transparent; }
+#main-copy a { color: var(--main-anchor-color); }
+#main-copy a:visited { color: var(--visited-anchor-color); }
+#main-copy a:hover {color: var(--hover-anchor-color); }
+
+.table-top {
+  color: var(--main-fg-color);
+  background-color: var(--theme-tabletop-bgcolor) ; /* 96C6F5; *//
+}
+
+/* TODO: this black text on white, and the background is not gray. Needs troubleshooting */
+.column-dark {
+  color: black;
+  background-color: var(--alt-bg-color);
+}
+
+.column-light {
+  color: var(--main-fg-color);
+  background-color: var(--alt-bg-color);
+}
+
+.watchBox {
+  color: var(--main-fg-color);
+  background-color: var(--theme-watchbox-bgcolor) ; 
+  border-color: var(--theme-box-bdr-color) ;
+}
+
+#main-copy .watchBox a {
+  color: blue;
+}
+
+#main-copy .watchBox a:hover {
+  color: var(--hover-anchor-color);
+  background-color: inherit;
+}
+
+.advisoryBoxnoactive {
+  color: var(--main-fg-color);
+  background-color: var(--alt-bg-color);
+  border-color: var(--theme-box-bdr-color) ;
+}
+
+.advisoryBox {
+  color: var(--main-fg-color);
+  background-color: 
+  border-color: var(--theme-box-bdr-color) ;
+}
+
+#main-copy .advisoryBox a {
+  color: blue;
+}
+
+#main-copy .advisoryBox a:hover {
+  color: var(--hover-anchor-color);
+  background-color: inherit;
+}
+
+.warningBox {
+  color: var(--alt-bg-color);
+  background-color: var(--theme-box-warn-bgcolor) ;
+  border-color: rgb(255,255,255);
+}
+
+#main-copy .warningBox a {
+  color: var(--alt-bg-color);
+}
+
+#main-copy .warningBox a:hover {
+  color: var(--hover-anchor-color);
+  background-color: inherit;
+}
+
+.tornadowarningBox {
+  color: var(--alt-bg-color);
+  background-color: var(--theme-box-warn-bgcolor) ;
+  border: var(--alt-bg-color);
+}
+
+#main-copy .tornadowarningBox a {
+  color: var(--alt-bg-color);
+}
+
+#main-copy .tornadowarningBox a:hover {
+  color: var(--hover-anchor-color);
+  background-color: inherit;
+}
+
+/* ##### ajaxSidebar ##### */
+.ajaxSidebar {
+  background-color: var(--alt-bg-color);
+}
+.ajaxSidebar h2 {
+    color: var(--alt-bg-color);
+    background-color: #5B9AD2;
+}
+
+.ajaxSidebar .meas {
+    color: var(--main-fg-color);
+    background-color: var(--alt-bg-color);
+}
+
+.ajaxSidebar .data {
+    color: var(--theme-hdr-bg-color) ; /* #3173B1; */
+    background-color: var(--alt-bg-color);
+}
+
+.ajaxSidebar td {
+     background-color: var(--alt-bg-color);
+}
+
+.ajaxDashboard .datahead {
+    color:  var(--main-fg-color);
+    background-color: var(--theme-hdr-bg-color) ; /*#3173B1; */
+}
+
+.ajaxDashboard .datahead2 {
+  border-bottom-color: var(--main-fg-color) ; /* #CCCCCC; */
+    color:  var(--main-fg-color);
+    background-color: var(--theme-hdr-bg-color) ; /*#3173B1; */
+}
+
+.ajaxDashboard .data1 {
+     color: var(--main-fg-color);
+     border-bottom-color: var(--main-fg-color) ; /* #CCCCCC; */
+     background-color: var(--alt-bg-color);
+}
+
+.ajaxDashboard .data2 {
+     color: var(--main-fg-color);
+     background-color: var(--alt-bg-color);
+}
+
+.ajaxDashboard td {
+     background-color: var(--alt-bg-color);
+}
+
+
+/* ##### Footer ##### */
+
+#footer {
+  color: var(--main-fg-color);
+  background-color: var(--theme-hdr-bg-color) ; /*#3173B1; */
+}
+
+#footer a {
+  color: var(--main-anchor-color);
+  background-color: transparent;
+}
+
+#footer a:visited {
+  color: var(--visited-anchor-color);
+  background-color: transparent;
+}
+
+.jsuparrow {
+background-color:#CDDBCD;
+color:#22464F;
+}
+
+.jsupoutline {
+background-color:#CDDBCD;
+border-color: #2266AA;
+}
+
+/* WordPress additions for Weather Display PHP AJAX Templates */
+/* Copy and paste all of this to the END of your CSS files */
+
+/* Begin Sidebar */
+#sidebar { background-color: #F1F8FE; }
+/* End Sidebar */
+
+
+/* Begin Calendar */
+#wp-calendar td.pad:hover { background-color: #fff; }
+/* End Calendar */
+
+
+#sidebar { color: var(--main-fg-color); }
+
+small, #sidebar ul ul li, #sidebar ul ol li, .nocomments, .postmetadata, blockquote, strike {
+  color: var(--main-fg-color);
+  }
+
+/* Begin Blog Main Copy */
+#blog-main {
+  color: var(--main-fg-color);
+  background-color: var(--alt-bg-color);
+  border-left-color: var(--main-bg-color);
+}
+
+#blog-main-dark {
+  color: var(--alt-bg-color);
+  background-color: var(--main-fg-color);
+}
+
+#blog-main h1 {
+  color: var(--main-fg-color);
+  background-color: transparent;
+}
+
+#blog-main h2 {
+  color: var(--main-fg-color);
+  background-color: transparent;
+}
+
+#blog-main a {
+  color: #336699;
+  background-color: transparent;
+}
+
+/* Captions */
+
+.wp-caption {
+  border-color: #ddd;
+  background-color: #f3f3f3;
+}
+
+/* End captions */
+
+.thread-alt {
+  color: var(--main-fg-color);
+  background-color: #F1F8FE;
+}
+
+.thread-even {
+  color: var(--main-fg-color);
+  background-color: var(--alt-bg-color);
+}
+
+/* ##### mjc extra ##### */
+
+.menuLinkSelectedhoriz {
+background-color: var(--theme-hdr-bg-color) ; /* #3173B1; */
+color: var(--alt-bg-color);
+}
+
+.menuLinkSelected {
+background-color: var(--theme-hdr-bg-color) ; /*  #3173B1; */
+color: var(--alt-bg-color);
+}
+
+/* Override settings in other pages, not always Saratoga-compliant.
+ * Set the <body> tag in the form you wish to update to:
+ * <body id="<?php echo basename(__FILE__,'.php');?>" >
+ * If necessary,=, use the !important tag to override the explicit color set in that file.
+*/
+body#wxnws-details #main-copy table {background-color: var(--alt-bg-color) !important ;}
+body#wxnws-details #main-copy table td {background-color: var(--alt-bg-color) !important ;}
+body#wxnws-details #main-copy {color: var(--main-fg-color) ;}
+body#wxnws-details #page {color:black; }
+
+body#wxadvisory #main-copy table {background-color: var(--alt-bg-color) !important ;}
+body#wxadvisory #main-copy table td {background-color: var(--alt-bg-color) !important ;}
+body#wxadvisory #main-copy {color: var(--main-fg-color) ;}
+body#wxadvisory #page {color:black; }
+
+body#wxstory #myDIV {color:black;}
+body#wxriverdetail #main-copy tr:not(.column-light) {color:black;}
+
+body#wxnwswinter-common #main-copy {background-color: var(--alt-bg-color) !important ;}
+
+body#wxradio #main-copy .container-fluid .row div {background-color: var(--alt-bg-color) !important ;}
+body#wxradio span#station, span.freq, span.xmloc, span.provide {color: lightblue !important ; }
+
+/* } /* end dark mode if invoking manually -- commented-out @media at top of file */
+/* end of weather-screen-blue-narrow-dark.css */
